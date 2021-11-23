@@ -32,15 +32,24 @@ const Login = ({ onLogin }) => {
         setLoginCredentials({ ...loginCredentials, [evt.target.id]: evt.target.value })
     }
 
+    const signUp = evt => {
+        navigate('/register')
+    }
+
     return (
         <div>
-            <h1>Login</h1>
-            <p className="errorMessage">{loginError}</p>
-            <form onChange={onChange} >
-                <input placeholder="User Name" id="username" />
-                <input type="password" placeholder="Password" id="password" />
-                <button onClick={login}>Login</button>
-            </form>
+            <div className="center">
+                <h1>Login</h1>
+                <p className="errorMessage">{loginError}</p>
+                <form className="form-group" onChange={onChange} >
+                    <input className="loginInput" placeholder="Username" id="username" />
+                    <br></br>
+                    <input className="loginInput" type="password" placeholder="Password" id="password" />
+                    <br></br>
+                    <button className="btn btn-success loginButton" onClick={login}>Login</button>
+                    <button className="btn btn-primary loginButton" onClick={signUp}>Sign up</button>
+                </form>
+            </div>
         </div >
     )
 }

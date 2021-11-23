@@ -55,3 +55,28 @@ ul.header li a:hover:not(.active) {
   font-weight: bold;
   font-size: 16px;
 }
+
+.registerSection {
+  margin-top: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.loginInput {
+  margin-top: 5px;
+  width: 24%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.loginButton {
+  width: 300px;
+  margin: 10px;
+}
+
+.statusMsg {
+  font-weight: bold;
+}
