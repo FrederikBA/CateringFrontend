@@ -15,7 +15,7 @@ const Header = ({ isLoggedIn, currentRoles, setCurrentRoles, onLogout }) => {
             <ul className='header'>
                 <li><NavLink activeclassname='active' to='/'>Home</NavLink></li>
 
-                {authUtils.handleAccess('user', currentRoles) && <li><NavLink activeclassname='active' to='/user'>User</NavLink></li>}
+                {authUtils.handleAccess('customer', currentRoles) && <li><NavLink activeclassname='active' to='/customer'>Customer</NavLink></li>}
                 {authUtils.handleAccess('admin', currentRoles) && <li> <NavLink activeclassname='active' to='/admin'>Admin</NavLink></li>}
 
                 {!isLoggedIn && <li><NavLink activeclassname='active' to='/login'>Login</NavLink></li>}

@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
 import LandingPage from './components/LandingPage';
-import User from './components/User';
+import Customer from './components/Customer';
 import Admin from './components/Admin';
 import NoMatch from './components/NoMatch';
 
@@ -20,7 +20,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
         <Route path='landing-page' element={<LandingPage currentRoles={currentRoles} setCurrentRoles={setCurrentRoles} />} />
-        <Route path='user' element={<User currentRoles={currentRoles} />} />
+        <Route path='customer' element={<Customer currentRoles={currentRoles} />} />
         <Route path='admin' element={<Admin currentRoles={currentRoles} />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
