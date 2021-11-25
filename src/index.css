@@ -72,11 +72,48 @@ ul.header li a:hover:not(.active) {
   box-sizing: border-box;
 }
 
+.menuSearch {
+  margin-top: 5px;
+  width: 39%;
+  padding: 6px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
 .loginButton {
-  width: 300px;
+  width: 11%;
   margin: 10px;
 }
 
 .statusMsg {
   font-weight: bold;
+}
+
+.courseImg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.courseImg:hover {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform .6s;
+  /* Animation */
+  cursor: pointer;
+  opacity: .9
+}
+
+.courseInfo {
+  font-size: 16px;
+}
+
+.courseSection {
+  text-align: center;
+  margin: 10vh 10vw;
+  height: 80vh;
+  padding: 25px;
+  position: relative;
+  display: inline-block;
 }
