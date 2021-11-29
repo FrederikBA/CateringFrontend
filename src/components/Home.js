@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import apiUtils from "../utils/apiUtils"
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [courses, setCourses] = useState([]);
@@ -9,6 +10,7 @@ const Home = () => {
     const [statusMessage, setStatusMessage] = useState();
 
     const URL = apiUtils.getUrl()
+    const navigate = useNavigate();
 
     const menu = { "courses": selectedCourses }
 
@@ -33,10 +35,8 @@ const Home = () => {
         setSelectedCourses(oldState => [...oldState, course])
     }
 
-    const createMenu = async (user) => {
-        user = localStorage.getItem('user')
-        await axios.post(URL + '/menu/' + user, menu
-        )
+    const toOrder = () => {
+        navigate('/order')
     }
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const Home = () => {
                     <input onChange={onChange} className="menuSearch" placeholder="Search for ingredient" id="search" />
                     <br></br>
                     <button onClick={search} className="btn btn-success loginButton">Search</button>
-                    <button onClick={createMenu} className="btn btn-primary loginButton">Order Menu</button>
+                    <button onClick={toOrder} className="btn btn-primary loginButton">Order Menu</button>
                 </div>
             </div>
             <div className="courseSection">
