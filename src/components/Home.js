@@ -6,6 +6,8 @@ const Home = () => {
     const [courses, setCourses] = useState([]);
     const [selectedCourses, setSelectedCourses] = useState([]);
     const [ingredient, setIngredient] = useState("");
+    const [statusMessage, setStatusMessage] = useState();
+
     const URL = apiUtils.getUrl()
 
     const menu = { "courses": selectedCourses }
@@ -16,7 +18,14 @@ const Home = () => {
 
     const search = async () => {
         const response = await axios.get(URL + '/recipes/' + ingredient)
-        setCourses(response.data.results)
+        if (response.data.msg === 'No ingredient was found') {
+            setStatusMessage("No ingredient was found")
+        } else if (response.data.results.length === 0) {
+            setStatusMessage("No ingredient was found")
+        } else {
+            setCourses(response.data.results)
+            setStatusMessage("")
+        }
     }
 
     const add = (course) => {
@@ -42,16 +51,15 @@ const Home = () => {
             </div>
             <div>
                 <div className="center">
+                    <p className="errorMessage">{statusMessage}</p>
                     <input onChange={onChange} className="menuSearch" placeholder="Search for ingredient" id="search" />
                     <br></br>
-                    <button onClick={search} className="btn btn-primary">Search</button>
+                    <button onClick={search} className="btn btn-success loginButton">Search</button>
+                    <button onClick={createMenu} className="btn btn-primary loginButton">Order Menu</button>
                 </div>
             </div>
             <div className="courseSection">
                 {courses.map((c) => <div onClick={() => add(c)} key={c.id}><img className="courseImg" src={c.image} alt="" /> <p className="courseInfo">{c.title}</p></div>)}
-            </div>
-            <div className="center">
-                <button onClick={createMenu} className="btn btn-primary">Create Menu</button>
             </div>
         </div>
     )

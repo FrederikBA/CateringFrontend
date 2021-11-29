@@ -32,7 +32,7 @@ const Login = ({ onLogin }) => {
         setLoginCredentials({ ...loginCredentials, [evt.target.id]: evt.target.value })
     }
 
-    const signUp = evt => {
+    const signUp = () => {
         navigate('/register')
     }
 
