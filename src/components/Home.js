@@ -24,8 +24,9 @@ const Home = () => {
         setSelectedCourses(oldState => [...oldState, course])
     }
 
-    const createMenu = async () => {
-        await axios.post(URL + '/menu', menu
+    const createMenu = async (user) => {
+        user = localStorage.getItem('user')
+        await axios.post(URL + '/menu/' + user, menu
         )
     }
 
