@@ -8,11 +8,10 @@ const Home = () => {
     const [selectedCourses, setSelectedCourses] = useState([]);
     const [ingredient, setIngredient] = useState("");
     const [statusMessage, setStatusMessage] = useState();
+    const [persistedCourses, setPersistedCourses] = useState([]);
 
     const URL = apiUtils.getUrl()
     const navigate = useNavigate();
-
-    const menu = { "courses": selectedCourses }
 
     const onChange = (evt) => {
         setIngredient(evt.target.value)
@@ -37,17 +36,21 @@ const Home = () => {
 
     const toOrder = () => {
         navigate('/order')
+
     }
 
     useEffect(() => {
-        if (selectedCourses.length) console.log(selectedCourses);
-    }, [selectedCourses]);
+        if (selectedCourses.length > 0) {
+            localStorage.setItem('menuArr', JSON.stringify(selectedCourses))
+            setPersistedCourses(JSON.parse(localStorage.getItem('menuArr')))
+        }
 
+    }, [selectedCourses]);
 
     return (
         <div>
             <div className="center">
-                Selected courses length: {selectedCourses.length}
+                Selected courses length: {persistedCourses.length}
             </div>
             <div>
                 <div className="center">
