@@ -10,6 +10,7 @@ const Order = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [servings, setServings] = useState(1);
   const [deliveryAddress, setDeliveryAddress] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
 
 
   const URL = apiUtils.getUrl()
@@ -27,6 +28,8 @@ const Order = () => {
     user = localStorage.getItem('user')
     await axios.post(URL + '/menu/' + user, menu
     )
+    setStatusMessage('Menu ordered successfully')
+    localStorage.removeItem('menuArr')
   }
 
   const updateServings = (e) => {
@@ -54,6 +57,7 @@ const Order = () => {
         onChange={(date) => setStartDate(date)} />
       <label>Delivery Address</label>
       <input onChange={updateDeliveryAddress} className="form-input" type="text" />
+      <p>{statusMessage}</p>
       <button onClick={createMenu} className="btn btn-success orderButton">Place order</button>
     </div>
   )

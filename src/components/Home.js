@@ -35,8 +35,13 @@ const Home = () => {
     }
 
     const toOrder = () => {
-        navigate('/order')
-
+        if (persistedCourses.length > 0) {
+            navigate('/order')
+            setStatusMessage('')
+        }
+        else {
+            setStatusMessage('Please add courses to your menu before you order.')
+        }
     }
 
     useEffect(() => {
@@ -46,10 +51,13 @@ const Home = () => {
         }
     }, [selectedCourses]);
 
+    useEffect(() => {
+        setPersistedCourses(JSON.parse(localStorage.getItem('menuArr')))
+    }, []);
+
     return (
         <div>
             <div className="center">
-                Selected courses length: {persistedCourses.length}
             </div>
             <div>
                 <div className="center">
