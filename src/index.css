@@ -117,3 +117,25 @@ ul.header li a:hover:not(.active) {
   position: relative;
   display: inline-block;
 }
+
+.orderSection {
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  margin-left: -100px;
+}
+
+.orderButton {
+  margin-top: 100px;
+  width: 100%;
+}
+
+.datePicker {
+  margin-top: 5px;
+  padding: 6px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

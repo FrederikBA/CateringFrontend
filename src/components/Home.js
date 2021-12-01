@@ -44,7 +44,6 @@ const Home = () => {
             localStorage.setItem('menuArr', JSON.stringify(selectedCourses))
             setPersistedCourses(JSON.parse(localStorage.getItem('menuArr')))
         }
-
     }, [selectedCourses]);
 
     return (
