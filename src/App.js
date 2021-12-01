@@ -10,6 +10,8 @@ import Customer from './components/Customer';
 import Admin from './components/Admin';
 import Order from './components/Order';
 import NoMatch from './components/NoMatch';
+import ViewCustomer from './components/ViewCustomers'
+import ViewOrders from './components/ViewOrders';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,6 +29,8 @@ function App() {
         <Route path='/admin' element={<Admin currentRoles={currentRoles} />} />
         <Route path='/order' element={<Order />} />
         <Route path='*' element={<NoMatch />} />
+        <Route path ='/viewcustomer' element={<ViewCustomer />} />
+        <Route path ='/vieworders' element={<ViewOrders/>} />
       </Routes>
     </div >
   );
