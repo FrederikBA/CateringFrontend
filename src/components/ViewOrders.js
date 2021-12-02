@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react"
 import apiUtils from "../utils/apiUtils";
 
-const ViewCustomer = () => {
+const ViewOrders = () => {
     const URL = apiUtils.getUrl()
 
     const [menus, setMenus] = useState([]);
@@ -42,4 +42,4 @@ const deleteMenu = async (event) => {
       </div>
   )
 };
-export default ViewCustomer
+export default ViewOrders

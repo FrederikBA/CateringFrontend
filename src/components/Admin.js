@@ -1,6 +1,7 @@
 import authUtils from "../utils/authUtils";
 import { useNavigate } from "react-router-dom";
 import ViewCustomer from "./ViewCustomers";
+import ViewOrders from "./ViewOrders";
 
 const Admin = ({ currentRoles }) => {
   const username = localStorage.getItem("user");

@@ -5,20 +5,25 @@ import apiUtils from "../utils/apiUtils";
 const ViewCustomer = () => {
     const URL = apiUtils.getUrl()
 
-    const [menus, setMenus] = useState([]);
+    const [customers, setCustomers] = useState([]);
 
 useEffect(() => {
-    const getMenus = async () => {
-        const response = await axios.get(URL + '/menu/all')
-        setMenus(response.data.menus);
+    const getCustomers = async () => {
+        const response = await axios.get(URL + '/user/all')
+        setCustomers(response.data.users);
         
     }
-    getMenus()
-}, [URL]);
+    getCustomers()
+}, [URL, customers]);
+
+const deleteUser = async (event) => {
+    const username = event.target.id
+    await axios.delete(URL + '/user/' + username)
+}
 
   return ( 
       <div>
-          <table>
+          <table className="table table-light">
             <thead>
                 <tr>
                     <th>Username</th>
@@ -26,7 +31,7 @@ useEffect(() => {
                 </tr>
             </thead>
         <tbody>
-            {menus.map((menu) => <tr key={menu.userName}><td>{menu.userName}</td> </tr>)}
+            {customers.map((customer) => <tr key={customer.userName}><td>{customer.userName}</td> <td><button id={customer.userName} className="btn btn-danger" username={customer.userName} onClick={deleteUser}>Delete</button></td> </tr>)}
         </tbody>
           </table>
       </div>
