@@ -12,6 +12,7 @@ import Order from './components/Order';
 import NoMatch from './components/NoMatch';
 import ViewCustomer from './components/ViewCustomers'
 import ViewOrders from './components/ViewOrders';
+import Receipt from './components/Receipt';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,7 +22,7 @@ function App() {
     <div>
       <Header isLoggedIn={isLoggedIn} currentRoles={currentRoles} setCurrentRoles={setCurrentRoles} onLogout={() => { localStorage.clear(); setIsLoggedIn(false) }} />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home isLoggedIn={isLoggedIn} />} />
         <Route path='/login' element={<Login onLogin={() => setIsLoggedIn(true)} />} />
         <Route path='/landing-page' element={<LandingPage currentRoles={currentRoles} setCurrentRoles={setCurrentRoles} />} />
         <Route path='/register' element={<Register />} />
@@ -29,8 +30,9 @@ function App() {
         <Route path='/admin' element={<Admin currentRoles={currentRoles} />} />
         <Route path='/order' element={<Order />} />
         <Route path='*' element={<NoMatch />} />
-        <Route path ='/viewcustomer' element={<ViewCustomer />} />
-        <Route path ='/vieworders' element={<ViewOrders/>} />
+        <Route path='/viewcustomer' element={<ViewCustomer />} />
+        <Route path='/vieworders' element={<ViewOrders />} />
+        <Route path='/receipt' element={<Receipt />} />
       </Routes>
     </div >
   );

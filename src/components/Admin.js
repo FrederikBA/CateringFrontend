@@ -1,7 +1,5 @@
 import authUtils from "../utils/authUtils";
 import { useNavigate } from "react-router-dom";
-import ViewCustomer from "./ViewCustomers";
-import ViewOrders from "./ViewOrders";
 
 const Admin = ({ currentRoles }) => {
   const username = localStorage.getItem("user");
@@ -21,7 +19,6 @@ const Admin = ({ currentRoles }) => {
     <div className="center ">
       {authUtils.handleAccess("admin", currentRoles) ? (
         <h1>
-          {" "}
           Welcome {username}, this is the admin page. Only users with the role:
           'admin' may access this.
         </h1>

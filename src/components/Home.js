@@ -3,7 +3,7 @@ import axios from "axios"
 import apiUtils from "../utils/apiUtils"
 import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const Home = ({ isLoggedIn }) => {
     const [courses, setCourses] = useState([]);
     const [selectedCourses, setSelectedCourses] = useState([]);
     const [ingredient, setIngredient] = useState("");
@@ -35,12 +35,12 @@ const Home = () => {
     }
 
     const toOrder = () => {
-        if (persistedCourses.length > 0) {
+        if (persistedCourses.length > 0 && localStorage.getItem('user') != null) {
             navigate('/order')
             setStatusMessage('')
         }
         else {
-            setStatusMessage('Please add courses to your menu before you order.')
+            setStatusMessage('Please log in and add courses to your menu before you order.')
         }
     }
 

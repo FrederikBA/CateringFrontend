@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { useNavigate } from "react-router";
 import axios from "axios"
 import apiUtils from "../utils/apiUtils"
 import DatePicker from "react-datepicker";
@@ -12,6 +13,7 @@ const Order = () => {
   const [deliveryAddress, setDeliveryAddress] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
 
+  const navigate = useNavigate()
 
   const URL = apiUtils.getUrl()
 
@@ -30,6 +32,7 @@ const Order = () => {
     )
     setStatusMessage('Menu ordered successfully')
     localStorage.removeItem('menuArr')
+    navigate('/receipt')
   }
 
   const updateServings = (e) => {
@@ -39,10 +42,6 @@ const Order = () => {
   const updateDeliveryAddress = (e) => {
     setDeliveryAddress(e.target.value)
   }
-
-  useEffect(() => {
-    console.log(numbers);
-  }, []);
 
   return (
     <div className="orderSection">
