@@ -29,8 +29,17 @@ const Header = ({ isLoggedIn, currentRoles, setCurrentRoles, onLogout }) => {
     }
 
     const openModal = () => {
-        setIsOpen(true);
-        setCartContent(JSON.parse(localStorage.getItem('menuArr')))
+        try {
+            if (localStorage.getItem('menuArr').length === 0) {
+                alert('Cart is empty')
+
+            } else {
+                setIsOpen(true);
+                setCartContent(JSON.parse(localStorage.getItem('menuArr')))
+            }
+        } catch (error) {
+            alert('Cart is empty')
+        }
     }
 
     const closeModal = () => {
