@@ -8,6 +8,7 @@ const Home = ({ isLoggedIn }) => {
     const [selectedCourses, setSelectedCourses] = useState([]);
     const [ingredient, setIngredient] = useState("");
     const [statusMessage, setStatusMessage] = useState();
+    const [activeColor, setMsgColor] = useState("");
     const [persistedCourses, setPersistedCourses] = useState([]);
 
     const URL = apiUtils.getUrl()
@@ -21,8 +22,10 @@ const Home = ({ isLoggedIn }) => {
         const response = await axios.get(URL + '/recipes/' + ingredient)
         if (response.data.msg === 'No ingredient was found') {
             setStatusMessage("No ingredient was found")
+            setMsgColor('#FF0000')
         } else if (response.data.results.length === 0) {
             setStatusMessage("No ingredient was found")
+            setMsgColor('#FF0000')
         } else {
             setCourses(response.data.results)
             setStatusMessage("")
@@ -30,8 +33,9 @@ const Home = ({ isLoggedIn }) => {
     }
 
     const add = (course) => {
-        console.log(course);
         setSelectedCourses(oldState => [...oldState, course])
+        setMsgColor('#4caf50')
+        setStatusMessage('Course added to menu: ' + course.title)
     }
 
     const toOrder = () => {
@@ -41,6 +45,7 @@ const Home = ({ isLoggedIn }) => {
         }
         else {
             setStatusMessage('Please log in and add courses to your menu before you order.')
+            setMsgColor('#FF0000')
         }
     }
 
@@ -51,15 +56,11 @@ const Home = ({ isLoggedIn }) => {
         }
     }, [selectedCourses]);
 
-    useEffect(() => {
-        setPersistedCourses(JSON.parse(localStorage.getItem('menuArr')))
-    }, []);
-
     return (
         <div>
             <div>
                 <div className="center">
-                    <p className="errorMessage">{statusMessage}</p>
+                    <p style={{ color: activeColor }} className="errorMessage" >{statusMessage}</p>
                     <input onChange={onChange} className="menuSearch" placeholder="Search for ingredient" id="search" />
                     <br></br>
                     <button onClick={search} className="btn btn-success loginButton">Search</button>
