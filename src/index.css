@@ -54,7 +54,6 @@ ul.header li a:hover:not(.active) {
 }
 
 .errorMessage {
-  color: red;
   font-weight: bold;
   font-size: 16px;
 }
@@ -157,4 +156,9 @@ ul.header li a:hover:not(.active) {
 .shoppingCart:hover {
   cursor: pointer;
   color: #e7e3df;
+}
+
+.styledText {
+  font-family: "Arial";
+  font-weight: bold;
 }
