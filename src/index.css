@@ -147,3 +147,14 @@ ul.header li a:hover:not(.active) {
   margin-top: 35px;
   width: 10%;
 }
+
+.shoppingCart {
+  color: white;
+  float: right;
+  margin: 10px;
+}
+
+.shoppingCart:hover {
+  cursor: pointer;
+  color: #e7e3df;
+}

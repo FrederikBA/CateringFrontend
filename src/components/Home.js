@@ -57,8 +57,6 @@ const Home = ({ isLoggedIn }) => {
 
     return (
         <div>
-            <div className="center">
-            </div>
             <div>
                 <div className="center">
                     <p className="errorMessage">{statusMessage}</p>
