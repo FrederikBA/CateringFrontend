@@ -13,6 +13,7 @@ import NoMatch from './components/NoMatch';
 import ViewCustomer from './components/ViewCustomers'
 import ViewOrders from './components/ViewOrders';
 import Receipt from './components/Receipt';
+import ChangeDatePage from './components/ChangeDate';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,6 +34,7 @@ function App() {
         <Route path='/viewcustomer' element={<ViewCustomer />} />
         <Route path='/vieworders' element={<ViewOrders />} />
         <Route path='/receipt' element={<Receipt />} />
+        <Route path='/changedatepage' element={<ChangeDatePage/>} />
       </Routes>
     </div >
   );

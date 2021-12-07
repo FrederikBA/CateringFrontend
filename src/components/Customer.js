@@ -2,11 +2,13 @@ import authUtils from "../utils/authUtils"
 import apiUtils from "../utils/apiUtils";
 import { useState, useEffect } from "react"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const Customer = ({ currentRoles }) => {
   const URL = apiUtils.getUrl()
   const username = localStorage.getItem('user')
-
+  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -22,6 +24,11 @@ const Customer = ({ currentRoles }) => {
     const id = event.target.id
     await axios.delete(URL + '/menu/' + id)
   }
+
+  const changedate = () => {
+    navigate('/changedate')
+  }
+  
     return (
       <div>
         {authUtils.handleAccess('customer', currentRoles) ? < h1 > Welcome {username}, here you can see a list of every order you have made.</h1> : (<h1>You do not have the correct role to view this page</h1>)}
@@ -35,11 +42,12 @@ const Customer = ({ currentRoles }) => {
               <th>Delivery Date</th>
               <th>Number of servings</th>
               <th>Price</th>
+              <th>Change Date</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => <tr key={order.id}><td>{order.id}</td><td>{order.created}</td><td>{order.deliveryAddress}</td><td>{order.deliveryDate}</td><td>{order.servings}</td><td>{order.totalPrice}</td><td><button className="btn btn-danger" id={order.id} onClick={deleteMenu}>Delete</button></td></tr>)}
+            {orders.map((order) => <tr key={order.id}><td>{order.id}</td><td>{order.created}</td><td>{order.deliveryAddress}</td><td>{order.deliveryDate}</td><td>{order.servings}</td><td>{order.totalPrice}</td><td><button className="btn btn-success"  onClick={changedate}>Change date</button></td><td><button className="btn btn-danger" id={order.id} onClick={deleteMenu}>Delete</button></td></tr>)}
           </tbody>
         </table>
 
