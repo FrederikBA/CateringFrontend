@@ -2,13 +2,13 @@ import authUtils from "../utils/authUtils"
 import apiUtils from "../utils/apiUtils";
 import { useState, useEffect } from "react"
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 
 
 const Customer = ({ currentRoles }) => {
   const URL = apiUtils.getUrl()
   const username = localStorage.getItem('user')
-  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -25,9 +25,7 @@ const Customer = ({ currentRoles }) => {
     await axios.delete(URL + '/menu/' + id)
   }
 
-  const changedate = () => {
-    navigate('/changedate')
-  }
+  
   
     return (
       <div>
@@ -47,7 +45,7 @@ const Customer = ({ currentRoles }) => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => <tr key={order.id}><td>{order.id}</td><td>{order.created}</td><td>{order.deliveryAddress}</td><td>{order.deliveryDate}</td><td>{order.servings}</td><td>{order.totalPrice}</td><td><button className="btn btn-success"  onClick={changedate}>Change date</button></td><td><button className="btn btn-danger" id={order.id} onClick={deleteMenu}>Delete</button></td></tr>)}
+            {orders.map((order) => <tr key={order.id}><td>{order.id}</td><td>{order.created}</td><td>{order.deliveryAddress}</td><td>{order.deliveryDate}</td><td>{order.servings}</td><td>{order.totalPrice}</td><td><NavLink to={`/customer/${order.id}`}><button className="btn btn-primary">Edit</button></NavLink></td><td><button className="btn btn-danger" id={order.id} onClick={deleteMenu}>Delete</button></td></tr>)}
           </tbody>
         </table>
 

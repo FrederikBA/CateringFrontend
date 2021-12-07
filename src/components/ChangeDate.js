@@ -1,26 +1,35 @@
 import axios from "axios";
 import { useState, useEffect } from "react"
-import apiUtils from "../utils/apiUtils";
+import apiUtils from "../utils/apiUtils"
+import { useParams } from "react-router"
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import { useNavigate } from "react-router";
 
-const ChangeDatePage = () => {
+
+const ChangeDate = () => {
+    const [startDate, setStartDate] = useState(new Date());
+    const id = parseInt(useParams().id)
     const URL = apiUtils.getUrl()
-    const [date, setDate] = useState();
+    const navigate = useNavigate()
 
 
-    useEffect(() => {
-        const editDate = async (id) => {
-            const response = await axios.get(URL + '/menu/' + id)
-            setDate();
-
+    const editDate = async () =>
+        await axios.put(URL + '/menu/' + id, {
+            "deliveryDate": startDate
         }
-        editDate()
-    }, [URL]);
-
+            , navigate('/customer')
+        )
 
     return (
-        <div>
-                <p>EDIT DATE ERRR'</p>
+        <div className="centerAligned">
+            <h2>Edit Delivery Date</h2>
+        <div className="orderSection">
+            <DatePicker locale="en" className="datePicker" selected={startDate}
+                onChange={(date) => setStartDate(date)} />
+            <button onClick={editDate} className="btn btn-success" >Change date</button>
+        </div>
         </div>
     )
 }
-export default ChangeDatePage
+export default ChangeDate

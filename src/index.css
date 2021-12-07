@@ -162,3 +162,8 @@ ul.header li a:hover:not(.active) {
   font-family: "Arial";
   font-weight: bold;
 }
+
+.centerAligned {
+  text-align: center;
+
+}
