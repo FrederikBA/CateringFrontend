@@ -46,6 +46,16 @@ const Header = ({ isLoggedIn, currentRoles, setCurrentRoles, onLogout }) => {
         setIsOpen(false);
     }
 
+    const deleteCourse = (event) => {
+        const id = (event.target.id);
+        const arr = JSON.parse(localStorage.getItem('menuArr'))
+        arr.splice(id, 1)
+        localStorage.setItem('menuArr', JSON.stringify(arr))
+        
+        //Update cart
+        setCartContent(JSON.parse(localStorage.getItem('menuArr')))
+    }
+
     return (
         <div>
             <ul className='header'>
@@ -67,7 +77,7 @@ const Header = ({ isLoggedIn, currentRoles, setCurrentRoles, onLogout }) => {
             >
                 <div>
                     <p className="styledText">You have ordered {cartContent.length} courses:</p>
-                    {cartContent.map((c) => <div key={c.id}><p className="courseInfo">{c.title}</p></div>)}
+                    {cartContent.map((c, index) => <div key={c.id}><p className="courseInfo">{c.title}<button onClick={deleteCourse} id={index} className="btn btn-danger m-2">Delete</button></p></div>)}
                 </div>
                 <button onClick={closeModal} className='close btn btn-primary'>Close</button>
             </Modal>

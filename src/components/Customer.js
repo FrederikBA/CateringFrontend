@@ -13,7 +13,7 @@ const Customer = ({ currentRoles }) => {
 
   useEffect(() => {
     const getOrders = async () => {
-      const response = await axios.get(URL + '/menu/' + username )
+      const response = await axios.get(URL + '/menu/' + username)
       setOrders(response.data.menus)
 
     }
