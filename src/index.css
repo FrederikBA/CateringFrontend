@@ -91,34 +91,6 @@ ul.header li a:hover:not(.active) {
   font-weight: bold;
 }
 
-.courseImg {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.courseImg:hover {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: transform 0.6s;
-  /* Animation */
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.courseInfo {
-  font-size: 16px;
-}
-
-.courseSection {
-  text-align: center;
-  margin: 10vh 10vw;
-  height: 80vh;
-  padding: 25px;
-  position: relative;
-  display: inline-block;
-}
 
 .orderSection {
   text-align: center;
@@ -165,5 +137,47 @@ ul.header li a:hover:not(.active) {
 
 .centerAligned {
   text-align: center;
+}
 
+.courseSelection {
+  border-style: solid;
+  border: 1px solid grey;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.096);
+  padding: 10px 100px 200px 10px;
+  margin-bottom: 20px;
+}
+
+.courseImg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  float: left;
+}
+
+.courseImg:hover {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.6s;
+  /* Animation */
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.courseInfo {
+  font-size: 16px;
+  font-family: "Arial";
+  font-weight: bold;
+  position: static;
+  /*padding: 0px 40% 0px 10%;*/
+}
+
+.courseSection {
+  text-align: center;
+  padding: 10px 25% 200px 25%;
+}
+
+.addToMenuButton {
+  margin-top: 50px;
+  float: right;
 }

@@ -60,7 +60,7 @@ const Home = ({ isLoggedIn }) => {
         <div>
             <div>
                 <div className="center">
-                    <p style={{ color: activeColor }} className="errorMessage" >{statusMessage}</p>
+
                     <input onChange={onChange} className="menuSearch" placeholder="Search for ingredient" id="search" />
                     <br></br>
                     <button onClick={search} className="btn btn-success loginButton">Search</button>
@@ -68,7 +68,8 @@ const Home = ({ isLoggedIn }) => {
                 </div>
             </div>
             <div className="courseSection">
-                {courses.map((c) => <div onClick={() => add(c)} key={c.id}><img className="courseImg" src={c.image} alt="" /> <p className="courseInfo">{c.title}</p></div>)}
+                <p style={{ color: activeColor }} className="errorMessage" >{statusMessage}</p>
+                {courses.map((c) => <div className="courseSelection" key={c.id}><img className="courseImg" src={c.image} alt="" /> <p className="courseInfo">{c.title}</p> <button onClick={() => add(c)} className="btn btn-success addToMenuButton">Add to menu</button></div>)}
             </div>
         </div>
     )
