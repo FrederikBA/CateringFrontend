@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import apiUtils from "../utils/apiUtils"
 import { useParams } from "react-router"
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,21 +14,21 @@ const ChangeDate = () => {
     const navigate = useNavigate()
 
 
-    const editDate = async () =>
+    const editDate = async () => {
         await axios.put(URL + '/menu/' + id, {
             "deliveryDate": startDate
-        }
-            , navigate('/customer')
-        )
+        })
+        navigate('/customer')
+    }
 
     return (
         <div className="centerAligned">
             <h2>Edit Delivery Date</h2>
-        <div className="orderSection">
-            <DatePicker locale="en" className="datePicker" selected={startDate}
-                onChange={(date) => setStartDate(date)} />
-            <button onClick={editDate} className="btn btn-success" >Change date</button>
-        </div>
+            <div className="orderSection">
+                <DatePicker locale="en" className="datePicker" selected={startDate}
+                    onChange={(date) => setStartDate(date)} />
+                <button onClick={editDate} className="btn btn-success" >Change date</button>
+            </div>
         </div>
     )
 }

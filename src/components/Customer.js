@@ -18,7 +18,7 @@ const Customer = ({ currentRoles }) => {
 
     }
     getOrders()
-  }, [URL, orders]);
+  }, [URL, orders, username]);
 
   const deleteMenu = async (event) => {
     const id = event.target.id
