@@ -154,15 +154,6 @@ ul.header li a:hover:not(.active) {
   float: left;
 }
 
-.courseImg:hover {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: transform 0.6s;
-  /* Animation */
-  cursor: pointer;
-  opacity: 0.9;
-}
 
 .courseInfo {
   font-size: 16px;
