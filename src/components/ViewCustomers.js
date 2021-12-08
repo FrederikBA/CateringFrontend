@@ -9,7 +9,7 @@ const ViewCustomer = () => {
 
     useEffect(() => {
         const getCustomers = async () => {
-            const response = await axios.get(URL + '/user/all')
+            const response = await apiUtils.getAuthAxios().get(URL + '/user/all')
             setCustomers(response.data.users);
 
         }

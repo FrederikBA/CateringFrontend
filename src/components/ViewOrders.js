@@ -9,7 +9,7 @@ const ViewOrders = () => {
 
 useEffect(() => {
     const getMenus = async () => {
-        const response = await axios.get(URL + '/menu/all')
+        const response = await apiUtils.getAuthAxios().get(URL + '/menu/all')
         setMenus(response.data.menus);
         
     }
