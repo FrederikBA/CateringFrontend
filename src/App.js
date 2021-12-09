@@ -14,6 +14,7 @@ import ViewCustomer from './components/ViewCustomers'
 import ViewOrders from './components/ViewOrders';
 import Receipt from './components/Receipt';
 import ChangeDate from './components/ChangeDate';
+import Courses from './components/Courses';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +36,7 @@ function App() {
         <Route path='/vieworders' element={<ViewOrders />} />
         <Route path='/receipt' element={<Receipt />} />
         <Route path='customer/:id' element={<ChangeDate />} />
+        <Route path='courses/:id' element={<Courses />} />
       </Routes>
     </div >
   );
