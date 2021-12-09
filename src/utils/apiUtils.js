@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://frederikcphb.dk/tomcat/catering/api";
+const URL = "http://localhost:8080/CateringAPI_war_exploded/api";
 
 const apiUtils = () => {
   const getUrl = () => {
