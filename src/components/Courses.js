@@ -29,7 +29,7 @@ const Courses = () => {
 
   return (
     <div className="center">
-      <h3>Ordernumber: {orderNumber}</h3>
+      <h3>Order number: {orderNumber}</h3>
       {courses.map((c) => <div className="courseSelection" key={c.id}><img className="courseImg" src={c.image} alt="" /> <p className="courseInfo">{c.title}</p></div>)}
       <button onClick={goBack} className="btn btn-success">Go back</button>
     </div>
